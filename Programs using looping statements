@@ -1,0 +1,126 @@
+#include<stdio.h>
+int main()
+{
+   int decimal,binary=0,place=1,remainder;
+
+
+   printf("enter a decimel number");
+   scanf("%d",&decimal );
+   while(decimal>0)
+   {
+      remainder=decimal%2;
+     binary+=remainder*place;
+     decimal/=2;
+     place*=10
+
+   }
+
+   printf("binary number is:%d ",binary);
+
+return 0;
+}
+----------------------------------------------------------
+#include<stdio.h>
+int main()
+{  int number,sum=0;
+   printf("enter a number");
+   scanf("%d",&number);
+   while(number!=0)
+{
+   sum+=number%10;
+   number/=10;
+}
+printf("sum of digits is %d/n",sum);
+return 0;
+}
+------------------------------------------------------------------
+#include<stdio.h>
+int main()
+{
+   int limit,i,j;
+   printf("enter the limit");
+   scanf("%d",&limit);
+   for
+      (i=1;i<=limit;i++)
+   {
+      for(j=1;j<=i;j++)
+      {
+         printf("%d",i);
+      }
+      printf("\n");
+   }
+   return 0;
+}
+----------------------------------------------------------------------
+
+#include<stdio.h>
+int main()
+{
+   int number,factorial=1,i;
+   printf("enter a number");
+   scanf("%d",&number);
+   if (number<0)
+   {
+      printf("factorial is not defined for negative number/n");
+   }
+   else
+   {
+      for(i=1;i<=number;i++)
+      {
+         factorial*=i;
+      }
+      printf("factorial of %d is %d/n",number,factorial);
+   }
+   return 0;
+}
+
+
+
+--------------------------------------------------------------------------
+#include<stdio.h>
+int main()
+{
+   int i=1,n,f,f1,f2;
+
+   printf("enter the number");
+   scanf("%d",&n);
+  f=0;
+  f1=1;
+  f2=1;
+   do
+   {
+      i++;
+      printf("%d\t",f);
+      f1=f2;
+      f2=f;
+      f=f1+f2;
+   }
+   while(i<=n);
+   return 0;
+}
+-----------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
