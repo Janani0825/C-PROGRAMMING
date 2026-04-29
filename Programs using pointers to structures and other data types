@@ -1,0 +1,147 @@
+#include<stdio.h>
+#include<stdlib.h>
+#include<string.h>
+struct Book{
+   int bookid;
+   char title[50];
+   char author[50];
+   float price;
+};
+void addbook(struct Book *book);
+    int removebook(struct Book **books,int *bookcount,int bookid);
+    void searchbook(struct Book *book,int bookcount,const char *searchtitle);
+    void displaybooks(struct Book *book,int bookcount);
+#include"bookhead.h"
+void addbook(struct Book *book){
+printf("\nEnter book ID:");
+scanf("%d",&book->bookid);
+printf("\nEnter book title:");
+getchar();
+fgets(book->title,sizeof(book->title),stdin);
+book->title[strcspn(book->title,"\n")]=0;
+printf("\nEnter author:");
+fgets(book->author,sizeof(book->author),stdin);
+book->author[strcspn(book->author,"\n")]=0;
+printf("\nEnter book price:");
+scanf("%f",&book->price);
+printf("\nBook added successfully....");
+}
+int removebook(struct Book **books,int *bookcount,int bookid)
+{
+int i,j;
+for(i=0;i<*bookcount;i++){
+if((*books)[i].bookid==bookid)
+{
+   for(j=1;j<*bookcount-1;j++){
+         (*books)[j]=(*books)[j+1];
+   }
+ (*bookcount)--;
+ printf("\nBook with ID %d removed successfully",bookid);
+ return 1;
+ }
+ printf("\nBook with ID %d not found...",bookid);
+ return 0;
+ }
+}
+ void searchbook(struct Book *books,int bookcount,const char *searchtitle){
+ int i;
+ int found=0;
+ for(i=0;i<bookcount;i++){
+ if(strstr(books[i].title,searchtitle)!=NULL){
+  printf("\nBOOK FOUND:");
+  printf("\nBook ID:%d",books[i].bookid);
+ printf("\nBook title:%s",books[i].title);
+printf("\nAuthor:%s",books[i].author);
+ printf("\nPrice:%.2f",books[i].price);
+ found=1;
+ }
+ }if(!found){
+    printf("\nNo book found....");
+ }
+ }
+void displaybooks(struct Book *books,int bookcount)
+{
+int i;
+if(bookcount==0){
+printf("\nNo books are available in the store");
+}
+else{
+   printf("\n----------------------------------------------- ");
+   printf("\n\t\tBOOK LIST");
+   printf("\n-----------------------------------------------");
+   for(i=0;i<bookcount;i++){
+      printf("\nBook ID:%d",books[i].bookid);
+      printf("\nTitle:%s",books[i].title);
+      printf("\nAuthor:%s",books[i].author);
+      printf("\nPrice:%d",books[i].price);
+       printf("\n--------------------------------------------------");
+   }
+   }
+}
+ int main(){
+    int choice,bookcount=0;
+    struct Book *books=(struct Book*)malloc(10*sizeof(struct Book));
+    if(books==NULL)
+    {
+       printf("\nMemory allocation failed....");
+       return 1;
+    }
+
+    while(1)
+    {
+       printf("\n-----------------------------------------------");
+       printf("\n\t\tBOOK STORE");
+       printf("\n-----------------------------------------------");
+       printf("\n1.Add a book\n2.Remove a book\n3.Search for a book\n4.Display books\n5.Exit");
+       printf("\n-----------------------------------------------");
+       printf("\nEnter your choice:");
+       scanf("%d",&choice);
+       switch(choice){
+case 1:
+             if(bookcount<10){
+                addbook(&books[bookcount]);
+                bookcount++;
+                printf("\nBook count:%d",bookcount);
+                 }
+             else{
+                 printf("\nBook store is empty");
+             }
+             break;
+case 2:
+             {
+                int bookid;
+                printf("\nEnter book id to remove");
+                scanf("%d",&bookid);
+                removebook(&books,&bookcount,bookid);
+             }
+
+       break;
+case 3:
+       {
+       char searchtitle[50];
+       printf("\nEnter the title to search:");
+       getchar();
+       fgets(searchtitle,sizeof(searchtitle),stdin);
+       searchtitle[strcspn(searchtitle,"\n")]=0;
+       searchbook(books,bookcount,searchtitle);
+
+      }
+    break;
+ case 4:
+    {
+    displaybooks(books,bookcount);
+    break;
+    case 5:
+    free(books);
+    printf("\nExiting........");
+    return 0;
+    default:
+    printf("\nInvalid choice.Please try again...");
+    }
+  }
+    }
+return 0;
+}
+---------------------------------------------------------------------------------------
+
+
