@@ -1,0 +1,153 @@
+#include<stdio.h>
+int main()
+{
+   int year;
+   printf("enter the year");
+   scanf("%d",&year);
+   if(year%400==0)
+      printf("%dis a leap year",year);
+   else if(year%100==0)
+      printf("%dnot a leap year",year);
+   else if(year%4==0)
+      printf("%dis a leap year",year);
+   else
+      printf("%dnot a leap yea",year);
+   return 0;
+}
+-----------------------------------------------------------------------------------------------------
+
+#include<stdio.h>
+#include<math.h>
+int main()
+{
+   int a,b,c;
+   double d,r1,r2,img1,img2,realpart;
+   printf("enter the value of a,b,c");
+   scanf("%d%d%d",&a,&b,&c);
+   d=(sqrt(b))-(4*a*c);
+   if(d>0)
+   { r1=b+(sqrt(d))/(2*a);
+   r2=b-(sqrt(d))/(2*a);
+   printf("the roots are%f%f",r1,r2);
+   }
+   else if(d==0)
+   {
+      r1=-b/(2*a);
+   r2=b/(2*a);
+      printf("the roots are%f%f",r1,r2);
+   }
+   else if(d<0)
+   {
+      realpart=-b/(2*a);
+   img1=(sqrt(d))/(2*a);
+   img2=-(sqrt(d))/(2*a);
+   r1=realpart+img1;
+   r2=realpart+img2;
+   printf("the roots are%f%f",r1,r2);
+   }
+   else
+      printf("invalidroots");
+   return 0;
+}
+
+---------------------------------------------------------------------------------------------------------------------------------
+#include<stdio.h>
+int main()
+{
+   char ch;
+   printf("enter a character");
+   scanf("%d",&ch);
+   if(ch<=48&&ch>=57)
+      printf("\n character is digit\n");
+   else if(ch<=65&&ch>=90)
+   {
+      if(ch==65||ch==69||ch==73||ch==79||ch==85)
+         printf("\nchracter is upper case vowel");
+      else
+         printf("\ncharacter is upper case consonantt");
+   }
+   else if (ch<=97&&ch>=122)
+   {
+      if(ch==97||ch==101||ch==111||ch==107||ch==105)
+         printf("\n chracter is lowercase vowel");
+      else
+         printf("\n character is lowercase consonant");
+   }
+   else
+   {
+      printf("\n given  character is a special case");
+   }
+   return 0;
+}
+--------------------------------------------------------------------------------------------------------------------------
+#include<stdio.h>
+int main()
+{
+   int num;
+   printf("\n enter the number(0-9)");
+   scanf("\n%d",&num);
+   switch(num)
+   {
+      case 0:
+         printf("zero");
+         break;
+      case 1:
+         printf("one");
+         break;
+      case 2:
+          printf("two");
+          break;
+      case 3:
+          printf("three");
+          break;
+      case 4:
+          printf("four");
+          break;
+      case 5:
+          printf("five");
+          break;
+      case 6:
+          printf(" six");
+          break;
+      case 7:
+           printf("seven");
+           break;
+      case 8:
+           printf("eight");
+           break;
+      case 9:
+           printf("nine");
+           break;
+      default:
+           printf(" invalid");
+   }
+   return 0;
+}
+
+--------------------------------------------------------------------------------------------------------
+#include<stdio.h>
+int main()
+{
+   int sp,cp,p,l;
+   printf("enter the selling price and cost price");
+   scanf("%d%d",&sp,&cp);
+   if(sp>cp)
+   {
+      p=sp-cp;
+      printf("profit,profit=%d",p);
+}
+   else if(sp<cp)
+   {
+      l=cp-sp;
+         printf("loss ,loss=%",l);
+   }
+   else
+   {
+      printf("no loss,no profit");
+   }
+   return 0;
+}
+
+
+
+
