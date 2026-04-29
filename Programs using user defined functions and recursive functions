@@ -1,0 +1,153 @@
+#include<stdio.h>
+int countdigits(int num); //HEADER FILE
+#include"counthead.h"
+int countdigit(int num)
+{
+   int count=0;
+   while (num!=0)
+   {
+      num/=10;
+      count++;
+   }
+   return count;
+}
+int main()
+{
+   int number,digitcount;
+   printf("Enter an integer:");
+   scanf("%d",&number);
+   digitcount=countdigit(number);
+   printf("No of digits:%d",digitcount);
+   return 0;
+}
+------------------------------------------------------------------------------------
+
+#include<stdio.h>
+void metre1(float) //HEADER FILE
+#include"feethead.h"
+void metre1(float feet)
+{
+   printf("%f",feet*12*2.54*0.01);
+}
+#include"feethead.h"
+int main()
+{
+   float feet;
+   printf("feet:");
+   scanf("%f",&feet);
+   metre1(feet);
+   return 0;
+}
+
+-----------------------------------------------------------------------------------
+#include<stdio.h>
+int gcd(int,int); //HEADER FILE
+#include"gcdhead.h"
+int gcd(int a,int b)
+{
+ if(b==0)
+ {
+   return a;
+}
+else
+{
+  return gcd(b,a%b);
+}
+}
+int main()
+{
+   int num1,num2,result;
+   printf("enter two number");
+   scanf("%d %d",&num1,&num2);
+   result=gcd(num1,num2);
+   printf("GCD of %d and %d is %d\n",num1,num2,result);
+   return 0;
+}
+--------------------------------------------------------------------------------
+#include<stdio.h>
+void swap(int,int); //HEADER FILE
+#include"swaphead.h"
+void swap(int a,int b)
+{
+   int temp;
+   temp=a;
+   a=b;
+   b=temp;
+   printf("swapped numbers %d %d",a,b);
+}
+int main()
+{
+   int a,b;
+   printf("enter two number");
+   scanf("%d %d",&a,&b);
+   printf("\nbefore swapping:%d %d ",a,b);
+   swap(a,b);
+   return 0;
+}
+----------------------------------------------------------------------------------
+#include"stronghead.h"
+int factorial(int);
+int strong(int n)
+{
+   int x,sum=0;
+   while(n>0)
+   {
+      x=n%10;
+      sum=sum+factorial(x);
+      n=(n/10);
+
+   }
+   return sum;
+
+}
+factorial(int f)
+{
+   if(f==0||f==1)
+      return 1;
+   else
+      return f*factorial(f-1);
+}
+int main()
+{
+   int n;
+   printf("Enter a number");
+   scanf("%d",&n);
+   if(strong(n)==n)
+      printf("The number is strong");
+   else
+      printf("Not strong");
+   return 0;
+}
+----------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
