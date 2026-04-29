@@ -1,0 +1,177 @@
+#include<stdio.h>
+#include<string.h>
+#include"palinhead.h"
+int ispalindrome(const char *str)
+{
+   int len,i;
+   len=strlen(str);
+   for(i=0;i<len/2;i++)
+   {
+      if(str[i]!=str[len-i-1])
+      {
+         return 0;
+      }
+   }
+   return 1;
+}
+int main()
+{
+   char str[100];
+   printf("\nenter a string : ");
+   scanf("%s",str);
+   if(ispalindrome(str))
+   {
+      printf("%s is a palindrome.\n",str);
+   }
+   else
+   {
+      printf("%s is a not palindrome.\n",str);
+   }
+   return 0;
+}
+----------------------------------------------------------------
+#include<stdio.h>
+#include<string.h>
+int findname(char name[][20],int size,char target[]);
+#include"searchhead.h"
+int findname(char names[][20],int size,char target[])
+{
+   int i;
+   for(i=0;i<size;i++)
+   {
+      if(strcmp(names[i],target)==0)
+      {
+         return i;
+      }
+   }
+ return -1;
+}
+int main()
+{
+   int index,i;
+   char names[5][20];
+   char target[20];
+   printf("\nenter 5 names : ");
+   for (i=0;i<5;i++)
+   {
+      scanf("%s",&names[i]);
+   }
+   printf("enter a name to be searched: ");
+   scanf("%s",target);
+   index=findname(names,5,target);
+   if(index!=-1)
+   {
+      printf("\n%s is found  at index %d",target,index);
+   }
+   else
+   {
+      printf("\n%s is not found",target);
+   }
+   return 0;
+}
+
+------------------------------------------------------------------------------
+#include<stdio.h>
+int findlocation(char str[],char ch);
+int ischarpresent(char str[],char ch);
+int countoccur(char str[],char ch);
+#include"locathead.h"
+int findlocation(char str[],char ch)
+{
+   int i;
+   for(i=0;str[i]!='\0';i++)
+   {
+      if(str[i]==ch)
+         return i;
+   }
+   return -1;
+}
+int ischaracterpresent(char str[],char ch)
+{
+   int i;
+   for(i=0;str[i]!='\0';i++)
+   {
+      if(str[i]==ch)
+         return-1;
+   }
+   return 0;
+}
+int countoccur(char str[],char ch)
+{
+   int count=0,i;
+   for(i=0;str[i]!='\0';i++)
+   {
+      if(str[i]==ch)
+         count++;
+   }
+   return count;
+}
+int main()
+{
+   int location,occurences;
+   char ch;
+   char str[100];
+   printf("\n enter a string : ");
+   scanf("%s",&str);
+   printf("\n enter a character to be searched: ");
+   scanf("\n%c",&ch);
+   location=findlocation(str,ch);
+   if(location!=-1)
+   {
+      printf("\nThe character '%c' is found at index %d.",ch,location+1);
+   }
+   else
+   {
+      printf("\n The character '%c' is not found in the string.",ch);
+   }
+   if(ischaracterpresent(str,ch))
+   {
+      printf("\n The character '%c' is present in the string.",ch);
+   }
+   else
+   {
+      printf("\n The character '%c' is not present in the string.",ch);
+   }
+   occurences=(countoccur(str,ch));
+
+         printf("\nThe character '%c' appears %d times in the string.\n",ch,occurences);
+
+         return 0;
+}
+------------------------------------------------------------------------------------------------
+#include<stdio.h>
+#include<string.h>
+#include<ctype.h>
+#include"upperhead.h"
+void touppercase(char str[])
+{
+   int i=0;
+   while(str[i]!='\0')
+   {
+      if(str[i]>='a'&& str[i]<='z')
+      {
+         str[i]=str[i]-32;
+      }
+      else if(str[i]>='A'&& str[i]<='Z')
+      {
+         str[i]=str[i]+32;
+      }
+      else
+      {
+         printf("\n invalide statement.\n");
+      }
+      i++;
+   }
+}
+int main()
+{
+   char str[100];
+   printf("\n enter a string: ");
+   fgets(str,sizeof(str),stdin);
+   str[strcspn(str,"\n")]=0;
+   touppercase(str);
+   printf("uppercase string: %s\n",str);
+   return 0;
+}
+
+----------------------------------------------------------------------------------------------
