@@ -1,0 +1,57 @@
+#include<stdio.h>
+#include<stdlib.h>
+int main()
+{
+ FILE *fp1,*fp2;
+ int op1,op2;
+ char op;
+ fp1=fopen("ip.txt","r");
+ fp2=fopen("op.txt","w");
+ while(fscanf(fp1,"%d%c%d",&op1,&op,&op2)!=EOF)
+  {
+    switch(op)
+      {
+        case'+':
+             fprintf(fp2,"%d%c%d=%d\n",op1,op,op2,op1+op2);
+             break;
+        case'-':
+              fprintf(fp2,"%d%c%d=%d\n",op1,op,op2,op1-op2);
+              break;
+        case'*':
+             fprintf(fp2,"%d%c%d=%d\n",op1,op,op2,op1*op2);
+             break;
+        case'/':
+            fprintf(fp2,"%d%c%d=%d\n",op1,op,op2,op1/op2);
+              break;
+         default:
+            printf("error\n");
+        }
+    }
+    fclose(fp1);
+    fclose(fp2);
+    return 0;
+ }
+
+-------------------------------------------------------------------------------------
+ #include <stdio.h>
+ #include <stdlib.h>
+ int main()
+ {
+    FILE *fp1,*fp2;
+    char ch;
+    fp1=fopen("input.txt","r");
+    fp2=fopen("output1.txt","w");
+    if(fp1==NULL||fp2==NULL)
+    {
+       printf("Error\n");
+    }
+    ch=fgetc(fp1);
+    while(ch!=EOF)
+    {
+      fputc(ch,fp2);
+      ch=fgetc(fp1);
+  }
+   fclose(fp1);
+   fclose(fp2);
+   return 0;
+}
